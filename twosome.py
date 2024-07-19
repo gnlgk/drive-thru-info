@@ -76,9 +76,9 @@ try:
             print(f"데이터 추출 오류: {e}")
 
 # 데이터를 JSON 파일로 저장
-print("데이터 저장 중...")
-with open(filename, 'w', encoding='utf-8') as f:
-    json.dump(ts_data, f, ensure_ascii=False, indent=4)
+    print("데이터 저장 중...")
+    with open(filename, 'w', encoding='utf-8') as f:
+        json.dump(ts_data, f, ensure_ascii=False, indent=4)
 
 except Exception as e:
     print(f"오류 발생: {e}")
