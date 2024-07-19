@@ -29,7 +29,7 @@ browser = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()
 browser.get('https://mo.twosome.co.kr/so/storeSearch.do')
 
 # 페이지가 완전히 로드될 때까지 대기
-WebDriverWait(browser, 10).until(
+WebDriverWait(browser, 20).until(
     EC.element_to_be_clickable((By.CLASS_NAME, "search_shop"))
 )
 
@@ -39,7 +39,7 @@ search_box.send_keys('dt점')
 browser.find_element(By.CSS_SELECTOR, ".search_shop > span > input:nth-child(4)").click()
 
 # 검색 결과 로드 대기
-WebDriverWait(browser, 10).until(
+WebDriverWait(browser, 20).until(
     EC.presence_of_element_located((By.CSS_SELECTOR, ".search_shop_result > ul > li"))
 )
 
