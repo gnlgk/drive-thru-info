@@ -47,8 +47,8 @@ jobs:
                 
     - name: commits
       run : |
-        git config --global user.email "liarusen@gmail.com"
-        git config --global user.name "sunhew"
+        git config --global user.email "gnlgk@gmail.com"
+        git config --global user.name "gnlgk"
         git add twosome/twosome_*.json
         git commit -m "메뉴 수집 완료"
         
