@@ -22,13 +22,13 @@ if not os.path.exists(folder_path):
 
 # 웹드라이브 설치 및 초기화, headless 모드로 설정
 options = ChromeOptions()
-options.add_argument("--headless")  # headless 모드 설정
+options.add_argument("--headless")
 browser = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
 
 # 페이지 로드
 browser.get('https://mo.twosome.co.kr/so/storeSearch.do')
 
-# 페이지가 완전히 로드될 때까지 대기
+# 검색 입력 상자가 클릭 가능할 때까지 대기
 WebDriverWait(browser, 10).until(
     EC.element_to_be_clickable((By.CLASS_NAME, "search_shop"))
 )
@@ -62,8 +62,7 @@ for track in tracks:
         image_url = track.select_one("div.shop_box.cf > div > img").get('src')
         if '=160' in image_url:
             image_url = image_url.replace('=160', '=720')
-        else: image_url = image_url
-
+        
         ts_data.append({
             "title": title,
             "address": address,
@@ -71,8 +70,7 @@ for track in tracks:
         })
 
     except Exception as e:
-            print(f"데이터 추출 오류: {e}")
-            
+        print(f"데이터 추출 오류: {e}")
 
 # 데이터를 JSON 파일로 저장
 print("데이터 저장 중...")
