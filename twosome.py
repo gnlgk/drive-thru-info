@@ -26,7 +26,7 @@ options.add_argument("--headless")
 browser = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
 
 # 페이지 로드
-browser.get('https://mo.twosome.co.kr/ts/tsSearchStoreList.do')
+browser.get('https://mo.twosome.co.kr/so/storeSearch.do')
 
 # 검색 입력 상자가 클릭 가능할 때까지 대기
 WebDriverWait(browser, 10).until(
