@@ -9,16 +9,10 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 import time
 import json
-import os
 
 # 현재 날짜 가져오기
 current_date = datetime.now().strftime("%Y-%m-%d")
-folder_path = "twosome"
-filename = f"{folder_path}/twosome_{current_date}.json"
-
-# 폴더 경로가 없다면 생성
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
+filename = f"twosome/twosome_{current_date}.json"
 
 # 웹드라이브 설치 및 초기화, headless 모드로 설정
 options = ChromeOptions()
