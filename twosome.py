@@ -75,18 +75,10 @@ try:
         except Exception as e:
             print(f"데이터 추출 오류: {e}")
 
-    # 데이터를 JSON 파일로 저장
-    print("데이터 저장 중...")
-
-
-   # 데이터를 JSON 파일로 저장
-    if ts_data:
-        print("데이터 저장 중...")
-        with open(filename, 'w', encoding='utf-8') as f:
-            json.dump(ts_data, f, ensure_ascii=False, indent=4)
-        print(f"JSON 파일이 {filename}에 저장되었습니다.")
-    else:
-        print("추출된 데이터가 없습니다.")
+# 데이터를 JSON 파일로 저장
+print("데이터 저장 중...")
+with open(filename, 'w', encoding='utf-8') as f:
+    json.dump(ts_data, f, ensure_ascii=False, indent=4)
 
 except Exception as e:
     print(f"오류 발생: {e}")
