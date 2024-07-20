@@ -34,7 +34,7 @@ try:
 
     # 검색 입력 상자가 클릭 가능할 때까지 대기 (대기 시간을 20초로 증가)
   
-    WebDriverWait(browser, 20).until(
+    WebDriverWait(browser, 50).until(
         EC.element_to_be_clickable((By.CLASS_NAME, "search_shop"))
     )
 
