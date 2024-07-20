@@ -34,7 +34,7 @@ driver = webdriver.Chrome(service=service, options=options)
 try:
     print("매장 검색 중...1")
     # 페이지 로드
-    url = 'https://map.naver.com/p/search/'
+    url = 'https://mo.twosome.co.kr/so/storeSearch.do'
     driver.get(url)
     action = ActionChains(driver)
 
