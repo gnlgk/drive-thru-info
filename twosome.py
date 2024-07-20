@@ -28,7 +28,7 @@ options.add_argument("--disable-dev-shm-usage")  # Optional: Some environments m
 browser = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
 
 try:
-      print("매장 검색 중...1")
+    print("매장 검색 중...1")
     # 페이지 로드
     browser.get('https://mo.twosome.co.kr/so/storeSearch.do')
 
