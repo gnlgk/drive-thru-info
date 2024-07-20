@@ -29,12 +29,11 @@ service = ChromeService(executable_path=ChromeDriverManager().install())
 # WebDriver 객체 생성
 driver = webdriver.Chrome(service=service, options=chrome_options)
 
-print("111")
-url = f'https://mo.twosome.co.kr/so/storeSearch.do'
+keyword = 'KFC DT점'
+url = f'https://map.naver.com/p/search/{keyword}'
 driver.get(url)
 action = ActionChains(driver)
 
-print("222")
 naver_res = pd.DataFrame(columns=['title', 'address'])
 last_name = ''
 
