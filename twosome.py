@@ -31,7 +31,7 @@ driver = webdriver.Chrome(service=service, options=options)
 
 try:
     # 페이지 로드
-    url = 'https://mo.twosome.co.kr/so/storeSearch.do'
+    url = 'https://www.twosome.co.kr/main.do'
     driver.get(url)
 
     # 검색 입력 상자가 클릭 가능할 때까지 대기
