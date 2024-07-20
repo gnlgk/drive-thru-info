@@ -23,22 +23,19 @@ if not os.path.exists(folder_path):
 # 웹드라이브 설치 및 초기화, headless 모드로 설정
 options = ChromeOptions()
 options.add_argument("--headless")
-options.add_argument("--no-sandbox")  # Optional: Some environments may require this
-options.add_argument("--disable-dev-shm-usage")  # Optional: Some environments may require this
-browser = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
+service = ChromeService(executable_path=ChromeDriverManager().install())
+browser = webdriver.Chrome(service=service, options=options)
 
 try:
-    print("매장 검색 중...1")
     # 페이지 로드
     browser.get('https://mo.twosome.co.kr/so/storeSearch.do')
 
     # 검색 입력 상자가 클릭 가능할 때까지 대기 (대기 시간을 20초로 증가)
-  
-    WebDriverWait(browser, 50).until(
+    WebDriverWait(browser, 10).until(
         EC.element_to_be_clickable((By.CLASS_NAME, "search_shop"))
     )
 
-    print("매장 검색 중...0")
+    print("매장 검색 중...")
     search_box = browser.find_element(By.CSS_SELECTOR, ".search_shop > span > input:nth-child(2)")
     search_box.send_keys('dt점')
     browser.find_element(By.CSS_SELECTOR, ".search_shop > span > input:nth-child(4)").click()
