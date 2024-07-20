@@ -28,11 +28,12 @@ options.add_argument("--disable-dev-shm-usage")  # Optional: Some environments m
 browser = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
 
 try:
+      print("매장 검색 중...1")
     # 페이지 로드
     browser.get('https://mo.twosome.co.kr/so/storeSearch.do')
 
     # 검색 입력 상자가 클릭 가능할 때까지 대기 (대기 시간을 20초로 증가)
-    print("매장 검색 중...1")
+  
     WebDriverWait(browser, 20).until(
         EC.element_to_be_clickable((By.CLASS_NAME, "search_shop"))
     )
