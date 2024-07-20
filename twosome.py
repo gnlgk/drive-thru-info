@@ -20,41 +20,44 @@ filename = f"{folder_path}/twosome_{current_date}.json"
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-# 웹드라이브 설치 및 초기화, headless 모드로 설정
+# 웹드라이버 설정
 options = ChromeOptions()
 options.add_argument("--headless")
+options.add_argument("--disable-gpu")
+options.add_argument("--no-sandbox")
 service = ChromeService(executable_path=ChromeDriverManager().install())
-browser = webdriver.Chrome(service=service, options=options)
+driver = webdriver.Chrome(service=service, options=options)
 
 try:
     # 페이지 로드
-    browser.get('https://mo.twosome.co.kr/so/storeSearch.do')
+    url = 'https://mo.twosome.co.kr/so/storeSearch.do'
+    driver.get(url)
 
-    # 검색 입력 상자가 클릭 가능할 때까지 대기 (대기 시간을 20초로 증가)
-    WebDriverWait(browser, 20).until(
-        EC.elementToBeClickable((By.CLASS_NAME, "search_shop"))
+    # 검색 입력 상자가 클릭 가능할 때까지 대기
+    WebDriverWait(driver, 20).until(
+        EC.element_to_be_clickable((By.CLASS_NAME, "search_shop"))
     )
 
     print("매장 검색 중...")
-    search_box = browser.find_element(By.CSS_SELECTOR, ".search_shop > span > input:nth-child(2)")
+    search_box = driver.find_element(By.CSS_SELECTOR, ".search_shop > span > input:nth-child(2)")
     search_box.send_keys('dt점')
-    browser.find_element(By.CSS_SELECTOR, ".search_shop > span > input:nth-child(4)").click()
+    driver.find_element(By.CSS_SELECTOR, ".search_shop > span > input:nth-child(4)").click()
     time.sleep(1)
 
     # 페이지의 끝까지 스크롤 내리기
     print("스크롤 내리는 중...")
-    last_height = browser.execute_script("return document.body.scrollHeight")
+    last_height = driver.execute_script("return document.body.scrollHeight")
 
     while True:
-        browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         time.sleep(2)
-        new_height = browser.execute_script("return document.body.scrollHeight")
+        new_height = driver.execute_script("return document.body.scrollHeight")
         if new_height == last_height:
             break
         last_height = new_height
 
     # 업데이트된 페이지 소스를 변수에 저장
-    html_source_updated = browser.page_source
+    html_source_updated = driver.page_source
     soup = BeautifulSoup(html_source_updated, 'html.parser')
 
     # 데이터 추출
@@ -92,4 +95,4 @@ except Exception as e:
 
 finally:
     # 브라우저 종료
-    browser.quit()
+    driver.quit
