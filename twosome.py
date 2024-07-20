@@ -32,11 +32,13 @@ service = ChromeService(executable_path=ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=options)
 
 try:
+    print("매장 검색 중...1")
     # 페이지 로드
     url = 'https://map.naver.com/p/search/'
     driver.get(url)
     action = ActionChains(driver)
 
+    print("매장 검색 중...2")
     # 검색 입력 상자가 클릭 가능할 때까지 대기
     WebDriverWait(driver, 20).until(
         EC.element_to_be_clickable((By.CLASS_NAME, "search_shop"))
