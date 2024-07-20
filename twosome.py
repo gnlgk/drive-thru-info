@@ -22,7 +22,7 @@ if not os.path.exists(folder_path):
 
 # 웹드라이브 설치 및 초기화, headless 모드로 설정
 options = ChromeOptions()
-# options.add_argument("--headless")
+options.add_argument("--headless")
 service = ChromeService(executable_path=ChromeDriverManager().install())
 browser = webdriver.Chrome(service=service, options=options)
 
