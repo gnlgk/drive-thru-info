@@ -31,8 +31,8 @@ try:
     browser.get('https://mo.twosome.co.kr/so/storeSearch.do')
 
     # 검색 입력 상자가 클릭 가능할 때까지 대기 (대기 시간을 20초로 증가)
-    WebDriverWait(browser, 10).until(
-        EC.element_to_be_clickable((By.CLASS_NAME, "search_shop"))
+    WebDriverWait(browser, 20).until(
+        EC.elementToBeClickable((By.CLASS_NAME, "search_shop"))
     )
 
     print("매장 검색 중...")
@@ -43,7 +43,15 @@ try:
 
     # 페이지의 끝까지 스크롤 내리기
     print("스크롤 내리는 중...")
-    browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    last_height = browser.execute_script("return document.body.scrollHeight")
+
+    while True:
+        browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        time.sleep(2)
+        new_height = browser.execute_script("return document.body.scrollHeight")
+        if new_height == last_height:
+            break
+        last_height = new_height
 
     # 업데이트된 페이지 소스를 변수에 저장
     html_source_updated = browser.page_source
