@@ -42,7 +42,6 @@ jobs:
       
     - name: run file
       run: |
-        # python3 kfc.py
         python3 twosome.py
                 
     - name: commits
