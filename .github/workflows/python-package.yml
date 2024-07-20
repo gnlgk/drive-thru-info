@@ -42,14 +42,14 @@ jobs:
       
     - name: run file
       run: |
-        python3 kfc.py
+        # python3 kfc.py
         python3 twosome.py
                 
     - name: commits
       run : |
         git config --global user.email "gnlgk@gmail.com"
         git config --global user.name "gnlgk"
-        git add kfc/kfc*.json
+        # git add kfc/kfc*.json
         git add twosome/twosome_*.json
         git commit -m "메뉴 수집 완료"
         
