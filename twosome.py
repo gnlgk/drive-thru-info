@@ -32,11 +32,12 @@ try:
     browser.get('https://mo.twosome.co.kr/so/storeSearch.do')
 
     # 검색 입력 상자가 클릭 가능할 때까지 대기 (대기 시간을 20초로 증가)
+      print("매장 검색 중...1")
     WebDriverWait(browser, 20).until(
         EC.element_to_be_clickable((By.CLASS_NAME, "search_shop"))
     )
 
-    print("매장 검색 중...")
+    print("매장 검색 중...0")
     search_box = browser.find_element(By.CSS_SELECTOR, ".search_shop > span > input:nth-child(2)")
     search_box.send_keys('dt점')
     browser.find_element(By.CSS_SELECTOR, ".search_shop > span > input:nth-child(4)").click()
