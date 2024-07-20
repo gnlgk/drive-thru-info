@@ -43,7 +43,6 @@ jobs:
     - name: run file
       run: |
         python3 twosome.py
-    
                 
     - name: commits
       run : |
