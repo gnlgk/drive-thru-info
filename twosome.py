@@ -5,7 +5,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver import ActionChains
 from bs4 import BeautifulSoup
 from datetime import datetime
 import time
@@ -36,7 +35,6 @@ try:
     # 페이지 로드
     url = 'https://mo.twosome.co.kr/so/storeSearch.do'
     driver.get(url)
-    action = ActionChains(driver)
 
     print("매장 검색 중...2")
     # 검색 입력 상자가 클릭 가능할 때까지 대기
